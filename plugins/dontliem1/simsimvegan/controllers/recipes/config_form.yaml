@@ -1,0 +1,10 @@
+name: dontliem1.simsimvegan::lang.recipe.single
+form: $/dontliem1/simsimvegan/models/recipe/fields.yaml
+modelClass: Dontliem1\Simsimvegan\Models\Recipe
+defaultRedirect: dontliem1/simsimvegan/recipes
+create:
+    redirect: 'dontliem1/simsimvegan/recipes/update/:id'
+    redirectClose: dontliem1/simsimvegan/recipes
+update:
+    redirect: dontliem1/simsimvegan/recipes
+    redirectClose: dontliem1/simsimvegan/recipes

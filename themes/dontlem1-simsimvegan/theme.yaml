@@ -1,0 +1,9 @@
+name: "dontlem1-simsimvegan"
+description: "No description provided yet..."
+author: "Winter CMS Scaffold"
+homepage: "https://example.com"
+code: "dontlem1-simsimvegan"
+form:
+    fields:
+        googleanalytics_id:
+            label: 'Google Analytics ID'

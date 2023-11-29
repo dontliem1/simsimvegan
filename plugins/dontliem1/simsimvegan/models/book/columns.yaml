@@ -1,0 +1,21 @@
+columns:
+    id:
+        label: 'dontliem1.simsimvegan::lang.id.label'
+        type: number
+    name:
+        label: 'dontliem1.simsimvegan::lang.name.label'
+        type: text
+        searchable: true
+    slug:
+        label: 'dontliem1.simsimvegan::lang.slug.label'
+        type: text
+        searchable: true
+    description:
+        label: 'dontliem1.simsimvegan::lang.description.label'
+        type: text
+        searchable: true
+    recipes_count:
+        label: 'dontliem1.simsimvegan::lang.recipe.plural'
+        relation: recipes
+        type: number
+        useRelationCount: true

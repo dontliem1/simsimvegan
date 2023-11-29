@@ -1,0 +1,12 @@
+list: $/dontliem1/simsimvegan/models/category/columns.yaml
+modelClass: Dontliem1\Simsimvegan\Models\Category
+title: dontliem1.simsimvegan::lang.category.plural
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'dontliem1/simsimvegan/categories/update/:id'

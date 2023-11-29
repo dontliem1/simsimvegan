@@ -1,0 +1,20 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table dontliem1_simsimvegan_ingridients'
+    - builder_table_create_dontliem1_simsimvegan_ingridients.php
+1.0.3:
+    - 'Created table dontliem1_simsimvegan_categories'
+    - builder_table_create_dontliem1_simsimvegan_categories.php
+1.0.4:
+    - 'Created table dontliem1_simsimvegan_recipes'
+    - builder_table_create_dontliem1_simsimvegan_recipes.php
+1.0.5:
+    - 'Created table dontliem1_simsimvegan_books'
+    - builder_table_create_dontliem1_simsimvegan_books.php
+1.0.6:
+    - 'Created table dontliem1_simsimvegan_book_recipe'
+    - builder_table_create_dontliem1_simsimvegan_book_recipe.php
+1.0.7:
+    - 'Created table dontliem1_simsimvegan_goods'
+    - builder_table_create_dontliem1_simsimvegan_goods.php

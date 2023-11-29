@@ -1,0 +1,16 @@
+fields:
+    name:
+        label: 'dontliem1.simsimvegan::lang.name.label'
+        span: auto
+        placeholder: 'dontliem1.simsimvegan::lang.category.name.placeholder'
+        required: true
+        type: text
+    slug:
+        label: 'dontliem1.simsimvegan::lang.slug.label'
+        span: auto
+        placeholder: 'dontliem1.simsimvegan::lang.category.slug.placeholder'
+        required: true
+        preset:
+            field: name
+            type: slug
+        type: text

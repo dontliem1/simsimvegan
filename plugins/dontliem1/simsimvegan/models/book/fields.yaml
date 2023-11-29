@@ -1,0 +1,33 @@
+fields:
+    name:
+        label: 'dontliem1.simsimvegan::lang.name.label'
+        span: auto
+        placeholder: 'dontliem1.simsimvegan::lang.book.name.placeholder'
+        required: true
+        type: text
+    slug:
+        label: 'dontliem1.simsimvegan::lang.slug.label'
+        span: auto
+        placeholder: 'dontliem1.simsimvegan::lang.book.slug.placeholder'
+        required: true
+        preset:
+            field: name
+            type: slug
+        type: text
+    good_id:
+        descriptionFrom: price
+        label: 'dontliem1.simsimvegan::lang.good.single'
+        list: $/dontliem1/simsimvegan/models/good/columns.yaml
+        modelClass: Dontliem1\SimsimVegan\Models\Good
+        nameFrom: id
+        type: recordfinder
+        useRelation: false
+    description:
+        label: 'dontliem1.simsimvegan::lang.description.label'
+        size: ''
+        type: textarea
+    introduction:
+        label: 'dontliem1.simsimvegan::lang.introduction.label'
+        size: large
+        mode: split
+        type: markdown

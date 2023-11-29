@@ -1,0 +1,10 @@
+name: dontliem1.simsimvegan::lang.ingridient.single
+form: $/dontliem1/simsimvegan/models/ingridient/fields.yaml
+modelClass: Dontliem1\Simsimvegan\Models\Ingridient
+defaultRedirect: dontliem1/simsimvegan/ingridients
+create:
+    redirect: 'dontliem1/simsimvegan/ingridients/update/:id'
+    redirectClose: dontliem1/simsimvegan/ingridients
+update:
+    redirect: dontliem1/simsimvegan/ingridients
+    redirectClose: dontliem1/simsimvegan/ingridients

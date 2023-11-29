@@ -1,0 +1,10 @@
+name: dontliem1.simsimvegan::lang.book.single
+form: $/dontliem1/simsimvegan/models/book/fields.yaml
+modelClass: Dontliem1\Simsimvegan\Models\Book
+defaultRedirect: dontliem1/simsimvegan/books
+create:
+    redirect: 'dontliem1/simsimvegan/books/update/:id'
+    redirectClose: dontliem1/simsimvegan/books
+update:
+    redirect: dontliem1/simsimvegan/books
+    redirectClose: dontliem1/simsimvegan/books

@@ -1,0 +1,9 @@
+columns:
+    name:
+        label: 'dontliem1.simsimvegan::lang.name.label'
+        type: text
+        searchable: true
+    slug:
+        label: 'dontliem1.simsimvegan::lang.slug.label'
+        type: text
+        searchable: true

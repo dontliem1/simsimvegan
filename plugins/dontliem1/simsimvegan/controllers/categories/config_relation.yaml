@@ -1,0 +1,13 @@
+recipes:
+    label: dontliem1.simsimvegan::lang.recipe.plural
+    view:
+        list: $/dontliem1/simsimvegan/models/recipe/columns_category.yaml
+        recordUrl: 'dontliem1/simsimvegan/recipes/update/:id'
+        toolbarButtons:
+            create: Создать рецепт
+            add: Привязать рецепт
+            remove: Отвязать выбранное
+    manage:
+        form: $/dontliem1/simsimvegan/models/recipe/fields.yaml
+        list: $/dontliem1/simsimvegan/models/recipe/columns.yaml
+        showSearch: true

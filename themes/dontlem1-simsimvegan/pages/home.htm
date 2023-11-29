@@ -1,0 +1,30 @@
+title = "Анастасия Воробьева"
+url = "/"
+layout = "default"
+is_hidden = 0
+==
+<?php
+
+use Dontliem1\Simsimvegan\Models\Book;
+
+public function onStart() {
+    $this['books'] = Book::orderBy('sort_order')->get();
+}
+?>
+==
+<div class="content">
+    <h1>{{ this.page.title }}</h1>
+    <section class="book-list">
+        <h2>Сборники рецептов</h2>
+        <ul>
+            {% for book in books %}
+                <li>
+                    <a href="{{ 'book'|page({ slug: book.slug }) }}">
+                        <h3>{{ book.name }}</h3>
+                        <p>{{ book.description }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>

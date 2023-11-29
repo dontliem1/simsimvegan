@@ -1,0 +1,33 @@
+plugin:
+    name: 'dontliem1.simsimvegan::lang.plugin.name'
+    description: 'dontliem1.simsimvegan::lang.plugin.description'
+    author: dontliem1
+    icon: wn-icon-heart
+    homepage: 'https://simsimvegan.ru'
+    replaces: {  }
+navigation:
+    simsimvegan-main:
+        label: 'dontliem1.simsimvegan::lang.plugin.name'
+        url: dontliem1/simsimvegan/recipes
+        icon: icon-heart
+        sideMenu:
+            books-item:
+                label: 'dontliem1.simsimvegan::lang.book.plural'
+                url: dontliem1/simsimvegan/books
+                icon: icon-book
+            categories-item:
+                label: 'dontliem1.simsimvegan::lang.category.plural'
+                url: dontliem1/simsimvegan/categories
+                icon: icon-sitemap
+            recipes-item:
+                label: 'dontliem1.simsimvegan::lang.recipe.plural'
+                url: dontliem1/simsimvegan/recipes
+                icon: icon-file-text
+            ingridients-item:
+                label: 'dontliem1.simsimvegan::lang.ingridient.plural'
+                url: dontliem1/simsimvegan/ingridients
+                icon: icon-apple
+            goods-item:
+                label: 'dontliem1.simsimvegan::lang.good.plural'
+                url: dontliem1/simsimvegan/goods
+                icon: icon-money

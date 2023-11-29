@@ -1,0 +1,10 @@
+name: dontliem1.simsimvegan::lang.category.single
+form: $/dontliem1/simsimvegan/models/category/fields.yaml
+modelClass: Dontliem1\Simsimvegan\Models\Category
+defaultRedirect: dontliem1/simsimvegan/categories
+create:
+    redirect: 'dontliem1/simsimvegan/categories/update/:id'
+    redirectClose: dontliem1/simsimvegan/categories
+update:
+    redirect: dontliem1/simsimvegan/categories
+    redirectClose: dontliem1/simsimvegan/categories

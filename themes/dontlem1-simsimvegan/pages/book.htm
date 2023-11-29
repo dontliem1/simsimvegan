@@ -1,0 +1,63 @@
+title = "Сборник"
+url = "/book/:slug"
+layout = "default"
+is_hidden = 0
+==
+<?php
+
+use Dontliem1\Simsimvegan\Models\Book;
+use Dontliem1\Simsimvegan\Models\Ingridient;
+use Dontliem1\Simsimvegan\Models\Recipe;
+
+public function onStart() {
+    $this['book'] = Book::where('slug', $this->param('slug'))->first();
+    $this->page['title'] = $this->book->name;
+    $this['units'] = Recipe::getUnitOptions();
+    $this['ingridients'] = Ingridient::all()->keyBy('id');
+    $this['ingridientsWithNotes'] = Ingridient::withContent()->get();
+}
+?>
+==
+<div class="content">
+    {{ html_link('home'|page, 'Назад') }}
+    <h1>{{ this.page.title }}</h1>
+    {{ book.introduction|md }}
+    {% for recipe in book.recipes %}
+        <article class="recipe">
+            <h2>{{ recipe.name }}</h2>
+            <div class="recipe__layout">
+                <div class="recipe__content">
+                    {{ recipe.content|md }}
+                </div>
+                <div class="recipe__ingridients">
+                    {% for ingridients_list in recipe.ingridients_lists %}
+                        <h3>{{ ingridients_list.title }}</h3>
+                        <ul>
+                        {% for ingridientRow in ingridients_list.ingridients %}
+                            {% set ingridient = ingridients[ingridientRow.ingridient_id] %}
+                            <li>{{ html_link('#' ~ ingridient.slug, ingridient.name) }} {{ ingridientRow.quantity }} {{ units[ingridientRow.unit] }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </div>
+                <div class="recipe__notes">
+                    <h3>Заметки повара</h3>
+                    {{ recipe.chefs_note|md }}
+                </div>
+            </div>
+        </article>
+    {% endfor %}
+    {% if ingridientsWithNotes %} 
+        <section>
+            <h2>Полезные заметки по продуктам</h2>
+            <ul>
+            {% for ingridient in ingridientsWithNotes %}
+                <li>
+                    <h3 id="{{ ingridient.slug }}">{{ ingridient.name }}</h3>
+                    {{ ingridient.content }}
+                </li>
+            {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+</div>

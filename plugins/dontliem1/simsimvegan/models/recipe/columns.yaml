@@ -1,0 +1,22 @@
+columns:
+    id:
+        label: 'dontliem1.simsimvegan::lang.id.label'
+        type: number
+    name:
+        label: 'dontliem1.simsimvegan::lang.name.label'
+        type: text
+        searchable: true
+    slug:
+        label: 'dontliem1.simsimvegan::lang.slug.label'
+        type: text
+        searchable: true
+    category_name:
+        label: 'dontliem1.simsimvegan::lang.category.single'
+        type: text
+        relation: category
+        valueFrom: name
+    books_count:
+        label: 'dontliem1.simsimvegan::lang.book.plural'
+        relation: books
+        type: number
+        useRelationCount: true

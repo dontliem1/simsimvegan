@@ -1,0 +1,12 @@
+list: $/dontliem1/simsimvegan/models/book/columns.yaml
+modelClass: Dontliem1\Simsimvegan\Models\Book
+title: dontliem1.simsimvegan::lang.book.plural
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'dontliem1/simsimvegan/books/update/:id'
