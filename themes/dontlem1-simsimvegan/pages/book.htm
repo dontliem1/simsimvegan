@@ -6,58 +6,89 @@ is_hidden = 0
 <?php
 
 use Dontliem1\Simsimvegan\Models\Book;
-use Dontliem1\Simsimvegan\Models\Ingridient;
 use Dontliem1\Simsimvegan\Models\Recipe;
 
 public function onStart() {
-    $this['book'] = Book::where('slug', $this->param('slug'))->first();
+    $this['book'] = Book::where('slug', $this->param('slug'))->with('recipes.photos')->first();
+    if (!$this->book) {
+        return redirect('404');
+    }
     $this->page['title'] = $this->book->name;
     $this['units'] = Recipe::getUnitOptions();
-    $this['ingridients'] = Ingridient::all()->keyBy('id');
-    $this['ingridientsWithNotes'] = Ingridient::withContent()->get();
+    $this['isPaid'] = str_contains($this->book->telegrams, $this->loggedUsername);
 }
 ?>
 ==
-<div class="content">
-    {{ html_link('home'|page, 'Назад') }}
-    <h1>{{ this.page.title }}</h1>
-    {{ book.introduction|md }}
-    {% for recipe in book.recipes %}
-        <article class="recipe">
-            <h2>{{ recipe.name }}</h2>
-            <div class="recipe__layout">
-                <div class="recipe__content">
-                    {{ recipe.content|md }}
-                </div>
-                <div class="recipe__ingridients">
-                    {% for ingridients_list in recipe.ingridients_lists %}
-                        <h3>{{ ingridients_list.title }}</h3>
-                        <ul>
-                        {% for ingridientRow in ingridients_list.ingridients %}
-                            {% set ingridient = ingridients[ingridientRow.ingridient_id] %}
-                            <li>{{ html_link('#' ~ ingridient.slug, ingridient.name) }} {{ ingridientRow.quantity }} {{ units[ingridientRow.unit] }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endfor %}
-                </div>
-                <div class="recipe__notes">
-                    <h3>Заметки повара</h3>
-                    {{ recipe.chefs_note|md }}
-                </div>
-            </div>
-        </article>
-    {% endfor %}
-    {% if ingridientsWithNotes %} 
-        <section>
-            <h2>Полезные заметки по продуктам</h2>
-            <ul>
-            {% for ingridient in ingridientsWithNotes %}
-                <li>
-                    <h3 id="{{ ingridient.slug }}">{{ ingridient.name }}</h3>
-                    {{ ingridient.content }}
-                </li>
+{{ html_image(book.cover|media, '', { width: 320, height: 178, class: 'book__cover' }) }}
+<h1 class="book__title">{{ this.page.title }}</h1>
+{% if not isPaid %}
+    <div class="container">
+        <p>Чтобы приобрести сборник, напишите мне в одной из социальных сетей из шапки сайта.</p>
+        <p class="book__price">{{ book.price }} ₽</p>
+    </div>
+{% endif %}
+<div class="container book__introduction">{{ book.introduction|md }}</div>
+<ul class="container book__anchors">{% for recipe in book.recipes %}<li>{{ isPaid ? html_link('#'~recipe.slug, recipe.name) : recipe.name }}</li>{% endfor %}</ul>
+{% if isPaid %}
+{% for recipe in book.recipes %}
+    <article class="recipe container" id="{{ recipe.slug }}">
+        {% set photos = recipe.photos().get() %}
+        {% if photos %}
+        <div class="recipe-photos">
+            {% for photo in photos %}
+                {{ html_image(photo.path, photo.title, { width: photo|imageWidth, height: photo|imageHeight, loading: 'lazy' }) }}
             {% endfor %}
-            </ul>
-        </section>
-    {% endif %}
-</div>
+        </div>
+        {% endif %}
+        <h2 class="recipe__name">{{ recipe.name }}</h2>
+        <p class="recipe__portions">{{ recipe.portions }}</p>
+        <div class="recipe-ingridients">
+            <h3 class="visually-hidden" hidden>Ингридиенты</h3>
+            {% for ingridients_list in recipe.ingridients_lists %}
+                {% if ingridients_list.title %}<h4 class="recipe-ingridients__title">{{ ingridients_list.title }}</h4>{% endif %}
+                <ul class="recipe-ingridients__list">
+                {% for ingridientRow in ingridients_list.ingridients %}
+                    <li><b>{{ ingridientRow.quantity|replace({ '0.5': '1/2', '0.25': '1/4' }) }} {{ units[ingridientRow.unit] }} {{ ingridientRow.name }}</b> {{ ingridientRow.description }}</li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="recipe-content">
+            {{ recipe.content|md }}
+        </div>
+        <div class="recipe-notes">
+            <h3>Заметки повара</h3>
+            {{ recipe.chefs_note|md }}
+        </div>
+    </article>
+{% endfor %}
+{% if book.ingridients %}
+<section class="container book-ingredients">
+    <details>
+        <summary><h2>Про ингредиенты</h2></summary>
+        <ul class="book__anchors book-ingredients__contents"></ul>
+        <div class="book__notes">{{ book.ingridients|md }}</div>
+        <script>
+            const bookIngredientsHeadings = document.querySelectorAll('.book-ingredients h4');
+            const bookIngredientsContents = document.querySelector('.book-ingredients__contents');
+            
+            for (let i = 0; i < bookIngredientsHeadings.length; i++) {
+                const bookIngredientsHeadingElement = document.createElement('li');
+                const bookIngredientsHeadingLink = document.createElement('a');
+                const id = `ingredient${i + 1}`;
+
+                bookIngredientsHeadings[i].id = id;
+                bookIngredientsHeadingLink.href = `#${id}`;
+                bookIngredientsHeadingLink.textContent = bookIngredientsHeadings[i].textContent;
+                bookIngredientsHeadingElement.appendChild(bookIngredientsHeadingLink);
+                bookIngredientsContents.appendChild(bookIngredientsHeadingElement);
+            }
+        </script>
+    </details>
+</section>
+{% endif %}
+<section class="container book__notes">
+    {{ book.notes|md }}
+</section>
+{% else %}
+{% endif %}

@@ -1,20 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% placeholder page_title default %}{{ this.page.title }}{% endplaceholder %}</title>
-        {% partial "meta/styles" %}
-        {% partial "meta/seo" %}
-        <meta name="generator" content="Winter CMS">
-    </head>
-    {% set pageId = this.page.id %}
-    {% set pageTitle = this.page.title %}
-    {% if pageId is empty %}
-        {% set pageId = page.id %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% placeholder page_title default %}{{ this.page.title }}{% endplaceholder %}</title>
+    {% partial "meta/styles" %}
+    {% partial "meta/seo" %}
+</head>
+{% set pageId = this.page.id %}
+{% set pageTitle = this.page.title %}
+{% if pageId is empty %}
+    {% set pageId = page.id %}
+{% endif %}
+{% if pageTitle is empty %}
+    {% set pageTitle = page.title %}
+{% endif %}
+<body class="page-{{ pageId }} layout-{{ this.layout.id }}">
+<header class="container header" id="top">
+    <a href="{{ 'home'|page }}"><img src="{{ 'assets/images/logo.svg'|theme }}" width="90" height="45" alt="SimSimVegan"></a>
+    <a href="https://t.me/simsimvegan" target="_blank"><img src="{{ 'assets/images/tg.svg'|theme }}" width="28" height="28" alt="Телеграм"></a>
+    <a href="https://vk.com/simsimvegan" target="_blank"><img src="{{ 'assets/images/vk.svg'|theme }}" width="28" height="28" alt="ВКонтакте"></a>
+    <a href="https://instagram.com/simsimvegan" target="_blank"><img src="{{ 'assets/images/ig.svg'|theme }}" width="28" height="28" alt="Инстаграм"></a>
+    {% if loggedUsername %}
+        <button class="header__btn" type="button" onclick="onTelegramLogout();">Выйти</button>
+        {% put scripts %}
+            <script>
+                function onTelegramLogout() {
+                    Snowboard.request(null, 'onTgLogout', {
+                        success: function handleSuccessTelegramLogout() {
+                            window.location.reload();
+                        },
+                    });
+                }
+            </script>
+        {% endput %}
+    {% else %}
+        <script src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="SimSimVeganBot" data-size="medium" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
+        {% put scripts %}
+            <script>
+                function onTelegramAuth(user) {
+                    Snowboard.request(null, 'onTgLogin', {
+                        data: { simsimvegan_tg_login: user.username },
+                        success: function handleSuccessTelegramUpdate() {
+                            Snowboard.flash(
+                                'Отлично! Теперь вы можете смотреть купленные сборники',
+                                'success',
+                                5
+                            );
+                            window.location.reload();
+                        },
+                    });
+                }
+            </script>
+        {% endput %}
     {% endif %}
-    {% if pageTitle is empty %}
-        {% set pageTitle = page.title %}
-    {% endif %}
-    <body class="page-{{ pageId }} layout-{{ this.layout.id }}">
+</header>
+<main>

@@ -1,4 +1,4 @@
-title = "Анастасия Воробьева"
+title = "Сборники рецептов"
 url = "/"
 layout = "default"
 is_hidden = 0
@@ -12,19 +12,20 @@ public function onStart() {
 }
 ?>
 ==
-<div class="content">
+<div class="book-list container">
     <h1>{{ this.page.title }}</h1>
-    <section class="book-list">
-        <h2>Сборники рецептов</h2>
-        <ul>
-            {% for book in books %}
-                <li>
-                    <a href="{{ 'book'|page({ slug: book.slug }) }}">
+    {# <p>Чтобы приобрести сборник, напишите мне в {{ html_link('https://t.me/simsimvegan', 'Телеграме', { class: 'link--solid' }) }}</p> #}
+    <ul>
+        {% for book in books %}
+            <li>
+                <a class="book-list__item" href="{{ 'book'|page({ slug: book.slug }) }}">
+                    {{ html_image(book.cover|media, '', { width: 200, height: 200 }) }}
+                    <div>
                         <h3>{{ book.name }}</h3>
                         <p>{{ book.description }}</p>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </section>
-</div>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>

@@ -8,13 +8,12 @@ use Winter\Storm\Database\Model;
 class Recipe extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
-    
+
     /*
      * Disable timestamps by default.
      * Remove this line if timestamps are defined in the database table.
      */
     public $timestamps = false;
-
 
     /**
      * @var string The database table used by the model.
@@ -26,7 +25,7 @@ class Recipe extends Model
      */
     public $rules = [
     ];
-    
+
     /**
      * @var array Attribute names to encode and decode using JSON.
      */
@@ -35,16 +34,20 @@ class Recipe extends Model
     public $belongsTo = ['category' => Category::class];
     public $belongsToMany = [
         'books' => [
-            Book::class, 
+            Book::class,
             'table'    => 'dontliem1_simsimvegan_book_recipe',
             'key' => 'book_id',
             'otherKey' => 'recipe_id',
         ]
     ];
 
+    public $attachMany = [
+        'photos' => 'System\Models\File',
+    ];
+
     static function getUnitOptions() {
         return [
-            'pcs' => 'шт.',
+            'pcs' => '',
             'g' => 'г',
             'kg' => 'кг',
             'ml' => 'мл',
@@ -52,11 +55,5 @@ class Recipe extends Model
             'tsp' => 'ч. л.',
             'tbsp' => 'ст. л.',
         ];
-    }
-
-    static function getIngridientIdOptions() {
-        return Ingridient::all()->mapWithKeys(function (Ingridient $item) {
-            return [$item['id'] => $item['name']];
-        })->all();
     }
 }

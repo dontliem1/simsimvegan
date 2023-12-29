@@ -1,6 +1,6 @@
 <?php namespace Dontliem1\Simsimvegan\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use Winter\Storm\Database\Updates\Migration;
 
 class BuilderTableCreateDontliem1SimsimveganRecipes extends Migration
@@ -14,12 +14,14 @@ class BuilderTableCreateDontliem1SimsimveganRecipes extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('category_id')->unsigned();
+            $table->string('portions')->nullable();
             $table->text('content');
             $table->text('chefs_note')->nullable();
             $table->text('ingridients_lists')->nullable();
+            $table->text('photos')->nullable();
         });
     }
-    
+
     public function down()
     {
         Schema::dropIfExists('dontliem1_simsimvegan_recipes');

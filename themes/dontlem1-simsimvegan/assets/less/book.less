@@ -1,0 +1,94 @@
+.book__cover {
+    height: auto;
+    margin-bottom: -3em;
+    max-height: 70vh;
+    object-fit: cover;
+    width: 100%;
+    @media (min-width: 50em) {
+        margin-bottom: -6em;
+    }
+}
+.book__title {
+    background-color: #235427;
+    color: #FEF1E9;
+    font-size: 2em;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-inline: 1rem;
+    max-width: max-content;
+    padding: .5em 0.75em .75em;
+    position: relative;
+    @media (min-width: 50em) {
+        font-size: 3em;
+        margin-inline: 1.5rem;
+    }
+}
+.book__anchors {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    max-width: 17em;
+    padding: 0;
+    vertical-align: top;
+    
+    & li + li {
+        margin-block-start: .75em;
+    }
+    & a {
+        border-bottom: .5px dashed;
+        color: #235427;
+        text-decoration: none;
+
+        &:hover {
+            color: inherit;
+        }
+    }
+}
+.book__introduction {
+    display: inline-block;
+    max-width: 70ch;
+    margin-block-end: 2em;
+}
+.book__price {
+    color: #235427;
+    font-family: 'Roboto Slab', Rockwell, 'Rockwell Nova', 'DejaVu Serif', 'Sitka Small', serif;
+    font-weight: 400;
+    font-size: 4em;
+    margin-block: 0 .5em;
+}
+.book__notes {
+    max-width: 70ch;
+}
+.book__notes > h2 {
+    margin: 1em 0 0;
+}
+.book__notes h3 {
+    margin: .5em 0 0;
+}
+.book__notes h4 {
+    margin-block-end: .5em;
+}
+.book__notes h5 {
+    font: inherit;
+    letter-spacing: .01em;
+    margin-block: .5em .25em;
+    text-transform: uppercase;
+}
+.book__notes ul {
+    margin: 0;
+    padding-inline-start: 1.25em;
+}
+.book__notes li {
+    margin-block-start: .5em;
+}
+.book-ingredients__contents {
+    max-width: none;
+    display: grid;
+    gap: .75em;
+    grid-template-columns: repeat(auto-fit, 9em);
+    margin-block: 1em;
+
+    &.book__anchors li {
+        margin: 0;
+    }
+}

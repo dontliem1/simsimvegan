@@ -19,10 +19,20 @@ fields:
     category:
         cssClass: col-xs-12 col-sm-4
         descriptionFrom: slug
-        label: 'dontliem1.simsimvegan::lang.category.single'
+        label: Категория
         required: true
         span: storm
         type: relation
+    photos:
+        label: Фотографии
+        span: auto
+        type: fileupload
+        mode: image
+        imageWidth: 200
+        imageHeight: 200
+    portions:
+        label: Порционность
+        placeholder: На 4 порции
     content:
         label: 'dontliem1.simsimvegan::lang.content.label'
         mode: split
@@ -40,7 +50,7 @@ fields:
         label: 'dontliem1.simsimvegan::lang.ingridients_lists.label'
         prompt: 'dontliem1.simsimvegan::lang.ingridients_lists.add'
         span: right
-        style: default
+        style: collapsed
         type: repeater
         form:
             fields:
@@ -55,27 +65,29 @@ fields:
                     type: repeater
                     form:
                         fields:
-                            ingridient_id:
-                                cssClass: col-xs-12 col-lg-6
-                                label: 'dontliem1.simsimvegan::lang.ingridient.single'
-                                required: true
-                                span: storm
-                                type: dropdown
                             quantity:
                                 cssClass: col-xs-6 col-lg-3
                                 default: 1
                                 label: 'dontliem1.simsimvegan::lang.quantity.label'
                                 min: 0.1
-                                required: true
                                 span: storm
                                 step: 0.1
                                 type: number
                             unit:
                                 cssClass: col-xs-6 col-lg-3
                                 label: 'dontliem1.simsimvegan::lang.unit.label'
-                                required: true
                                 span: storm
                                 type: dropdown
+                            name:
+                                cssClass: "col-xs-12 col-lg-6 font-weight-bold"
+                                comment: 'Если не в шт. — в родительном пад.'
+                                label: Ингридиент
+                                placeholder: мелко нарезанных листьев шалфея
+                                required: true
+                                span: storm
+                            description:
+                                label: Описание
+                                placeholder: '(около 6 штук)'
     books:
         cssClass: 'inline-options'
         label: 'dontliem1.simsimvegan::lang.book.plural'

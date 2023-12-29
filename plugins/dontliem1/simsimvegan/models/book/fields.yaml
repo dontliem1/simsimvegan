@@ -14,20 +14,48 @@ fields:
             field: name
             type: slug
         type: text
-    good_id:
-        descriptionFrom: price
-        label: 'dontliem1.simsimvegan::lang.good.single'
-        list: $/dontliem1/simsimvegan/models/good/columns.yaml
-        modelClass: Dontliem1\SimsimVegan\Models\Good
-        nameFrom: id
-        type: recordfinder
-        useRelation: false
+    price:
+        default: 990
+        label: 'dontliem1.simsimvegan::lang.price.label'
+        min: 1
+        placeholder: '990'
+        required: true
+        span: auto
+        type: number
+    original_price:
+        label: 'dontliem1.simsimvegan::lang.original_price.label'
+        min: 1
+        placeholder: '1990'
+        span: auto
+        type: number
+    cover:
+        label: Обложка
+        mode: image
+        type: mediafinder
     description:
         label: 'dontliem1.simsimvegan::lang.description.label'
         size: ''
         type: textarea
+    color:
+        label: Цвет
+        span: auto
+        type: colorpicker
     introduction:
         label: 'dontliem1.simsimvegan::lang.introduction.label'
         size: large
         mode: split
         type: markdown
+    ingridients:
+        label: Про ингридиенты
+        size: giant
+        mode: split
+        type: markdown
+    notes:
+        label: Заметки
+        size: giant
+        mode: split
+        type: markdown
+    telegrams:
+        label: Телеграм-логины купивших
+        placeholder: username
+        type: taglist

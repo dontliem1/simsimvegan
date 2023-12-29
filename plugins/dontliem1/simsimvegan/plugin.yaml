@@ -23,11 +23,3 @@ navigation:
                 label: 'dontliem1.simsimvegan::lang.recipe.plural'
                 url: dontliem1/simsimvegan/recipes
                 icon: icon-file-text
-            ingridients-item:
-                label: 'dontliem1.simsimvegan::lang.ingridient.plural'
-                url: dontliem1/simsimvegan/ingridients
-                icon: icon-apple
-            goods-item:
-                label: 'dontliem1.simsimvegan::lang.good.plural'
-                url: dontliem1/simsimvegan/goods
-                icon: icon-money

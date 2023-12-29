@@ -1,5 +1,18 @@
 description = "Default layout"
 ==
+<?php
+function onStart() {
+    $this['loggedUsername'] = Cookie::get('simsimvegan_tg_login');
+}
+function onTgLogin() {
+    Cookie::queue('simsimvegan_tg_login', post('simsimvegan_tg_login'));
+}
+function onTgLogout() {
+    Cookie::unqueue('simsimvegan_tg_login');
+    Cookie::queue('simsimvegan_tg_login', null, time() - 3600);
+}
+?>
+==
 {% partial "site/header" %}
 
     {% page %}
