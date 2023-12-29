@@ -32,6 +32,3 @@ package-lock.json
 /plugins/*
 !/plugins/dontliem1
 modules/*
-
-# Ignore generated public directory from `winter:mirror public`
-public
