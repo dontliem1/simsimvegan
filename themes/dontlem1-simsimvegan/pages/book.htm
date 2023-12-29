@@ -15,7 +15,7 @@ public function onStart() {
     }
     $this->page['title'] = $this->book->name;
     $this['units'] = Recipe::getUnitOptions();
-    $this['isPaid'] = str_contains($this->book->telegrams, $this->loggedUsername);
+    $this['isPaid'] = $this->book->telegrams && $this->loggedUsername && str_contains($this->book->telegrams, $this->loggedUsername);
 }
 ?>
 ==
