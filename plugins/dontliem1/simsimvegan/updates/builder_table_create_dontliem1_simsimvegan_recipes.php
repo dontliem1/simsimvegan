@@ -19,6 +19,7 @@ class BuilderTableCreateDontliem1SimsimveganRecipes extends Migration
             $table->text('chefs_note')->nullable();
             $table->text('ingridients_lists')->nullable();
             $table->text('photos')->nullable();
+            $table->integer('sort_order')->default(0);
         });
     }
 

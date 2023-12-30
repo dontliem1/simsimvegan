@@ -1,4 +1,4 @@
-title = "Сборники рецептов"
+title = "Рецепты"
 url = "/"
 layout = "default"
 is_hidden = 0
@@ -14,7 +14,6 @@ public function onStart() {
 ==
 <div class="book-list container">
     <h1>{{ this.page.title }}</h1>
-    {# <p>Чтобы приобрести сборник, напишите мне в {{ html_link('https://t.me/simsimvegan', 'Телеграме', { class: 'link--solid' }) }}</p> #}
     <ul>
         {% for book in books %}
             <li>

@@ -1,0 +1,3 @@
+modelClass: Dontliem1\Simsimvegan\Models\Recipe
+toolbar:
+    buttons: reorder_toolbar

@@ -16,6 +16,7 @@ public function onStart() {
     $this->page['title'] = $this->book->name;
     $this['units'] = Recipe::getUnitOptions();
     $this['isPaid'] = $this->book->telegrams && $this->loggedUsername && str_contains($this->book->telegrams, $this->loggedUsername);
+    $this['recipes'] = $this->book->recipes->sortBy('sort_order');
 }
 ?>
 ==
@@ -28,9 +29,9 @@ public function onStart() {
     </div>
 {% endif %}
 <div class="container book__introduction">{{ book.introduction|md }}</div>
-<ul class="container book__anchors">{% for recipe in book.recipes %}<li>{{ isPaid ? html_link('#'~recipe.slug, recipe.name) : recipe.name }}</li>{% endfor %}</ul>
+<ul class="container book__anchors">{% for recipe in recipes %}<li>{{ isPaid ? html_link('#'~recipe.slug, recipe.name) : recipe.name }}</li>{% endfor %}</ul>
 {% if isPaid %}
-{% for recipe in book.recipes %}
+{% for recipe in recipes %}
     <article class="recipe container" id="{{ recipe.slug }}">
         {% set photos = recipe.photos().get() %}
         {% if photos %}

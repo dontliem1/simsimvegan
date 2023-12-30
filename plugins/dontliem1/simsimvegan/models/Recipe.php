@@ -7,6 +7,7 @@ use Winter\Storm\Database\Model;
  */
 class Recipe extends Model
 {
+    use \Winter\Storm\Database\Traits\Sortable;
     use \Winter\Storm\Database\Traits\Validation;
 
     /*
@@ -54,6 +55,7 @@ class Recipe extends Model
             'l' => 'л',
             'tsp' => 'ч. л.',
             'tbsp' => 'ст. л.',
+            'drops' => 'капли',
         ];
     }
 }
