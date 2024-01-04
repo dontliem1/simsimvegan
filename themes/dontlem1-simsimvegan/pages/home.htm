@@ -13,7 +13,7 @@ public function onStart() {
 ?>
 ==
 <div class="book-list container">
-    <h1>{{ this.page.title }}</h1>
+    <h1>{{ this.page.title }} <small class="badge badge--vegan">Веган</small> <small class="badge badge--sugar">Без сахара</small></h1>
     <ul>
         {% for book in books %}
             <li>
@@ -22,6 +22,9 @@ public function onStart() {
                     <div>
                         <h3>{{ book.name }}</h3>
                         <p>{{ book.description }}</p>
+                        {% if not loggedUsername or not book.telegrams or not (loggedUsername in book.telegrams) %}
+                        <p class="book-list__price">{{ book.price }} ₽</p>
+                        {% endif %}
                     </div>
                 </a>
             </li>
