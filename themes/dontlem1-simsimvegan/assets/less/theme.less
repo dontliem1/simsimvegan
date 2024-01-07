@@ -71,7 +71,8 @@ summary > h2 {
 .book-list__item {
     color: inherit;
     background-color: white;
-    display: block;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     text-decoration: none;
 
@@ -85,15 +86,22 @@ summary > h2 {
 }
 
 .book-list h3 {
-    margin: 0 0 .25em;
+    margin: 0;
 }
 
-.book-list div {
+.book-list__text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     padding: 1em;
+}
+p.book-list__description {
+    margin-top: 0.5em;
 }
 .book-list__price {
     font-size: 150%;
-    margin-block-start: 1rem;
+    margin-block-start: auto;
+    padding-block-start: 1rem;
 }
 
 .badge {
@@ -102,14 +110,15 @@ summary > h2 {
     padding: 0.025em 0.6em;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-family: system-ui, sans-serif;
-    font-size: 75%;
+    font-size: 80%;
     vertical-align: baseline;
 }
 .badge--vegan {
-    background-color: darkgreen;
-    color: white;
+    background-color: darkseagreen;
 }
-.badge--sugar {
+.badge--sugar_free {
+    background-color: lightblue;
+}
+.badge--gluten_free {
     background-color: antiquewhite;
 }

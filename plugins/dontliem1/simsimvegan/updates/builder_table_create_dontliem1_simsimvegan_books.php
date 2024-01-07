@@ -19,6 +19,7 @@ class BuilderTableCreateDontliem1SimsimveganBooks extends Migration
             $table->string('cover')->nullable();
             $table->string('description')->nullable();
             $table->string('color')->nullable();
+            $table->string('badges')->nullable();
             $table->text('introduction')->nullable();
             $table->mediumText('ingridients')->nullable();
             $table->text('notes')->nullable();

@@ -30,7 +30,7 @@ class Book extends Model
     /**
      * @var array Attribute names to encode and decode using JSON.
      */
-    public $jsonable = [];
+    public $jsonable = ['badges'];
 
     public $belongsToMany = [
         'recipes' => [
@@ -40,4 +40,12 @@ class Book extends Model
             'otherKey' => 'book_id'
         ]
     ];
+
+    static function getBadgesOptions() {
+        return [
+            'vegan' => 'Веган',
+            'sugar_free' => 'Без сахара',
+            'gluten_free' => 'Без глютена',
+        ];
+    }
 }

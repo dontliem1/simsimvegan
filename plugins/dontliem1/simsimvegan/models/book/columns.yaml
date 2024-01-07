@@ -14,6 +14,10 @@ columns:
         label: 'dontliem1.simsimvegan::lang.description.label'
         type: text
         searchable: true
+    badges:
+        label: 'dontliem1.simsimvegan::lang.badges.label'
+        type: text
+        searchable: true
     recipes_count:
         label: 'dontliem1.simsimvegan::lang.recipe.plural'
         relation: recipes

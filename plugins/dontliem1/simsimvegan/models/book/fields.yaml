@@ -36,6 +36,11 @@ fields:
         label: 'dontliem1.simsimvegan::lang.description.label'
         size: ''
         type: textarea
+    badges:
+        cssClass: 'inline-options'
+        label: 'dontliem1.simsimvegan::lang.badges.label'
+        span: auto
+        type: checkboxlist
     color:
         label: Цвет
         span: auto
