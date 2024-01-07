@@ -1,3 +1,5 @@
+@import './recipe.less';
+
 .book__cover {
     height: auto;
     margin-bottom: -3em;
@@ -5,10 +7,12 @@
     object-fit: cover;
     object-position: bottom;
     width: 100%;
+
     @media (min-width: 50em) {
         margin-bottom: -6em;
     }
 }
+
 .book__title {
     background-color: #235427;
     color: #FEF1E9;
@@ -19,22 +23,33 @@
     max-width: max-content;
     padding: .5em 0.75em .75em;
     position: relative;
+
     @media (min-width: 50em) {
         font-size: 3em;
         margin-inline: 1.5rem;
     }
 }
-.book__anchors {
-    display: inline-block;
+
+.book__start {
+    @media (min-width: 50em) {
+        display: grid;
+        column-gap: 3em;
+        grid-template-columns: 1fr 20em;
+        grid-template-rows: auto 1fr;
+    }
+}
+
+.book-anchors__list {
     list-style: none;
     margin: 0;
-    max-width: 17em;
+    max-width: 20em;
     padding: 0;
     vertical-align: top;
-    
-    & li + li {
+
+    & li+li {
         margin-block-start: .75em;
     }
+
     & a {
         border-bottom: .5px dashed;
         color: #235427;
@@ -45,43 +60,73 @@
         }
     }
 }
+
 .book__introduction {
-    display: inline-block;
     max-width: 70ch;
     margin-block-end: 2em;
+    @media (min-width: 50em) {
+        grid-column: ~'1/2';
+        grid-row: ~'1/3';
+    }
+
+    & blockquote {
+        border-left: 2px solid #235427;
+        font-size: 125%;
+        font-style: italic;
+        margin: 0 0 1em;
+        padding-left: 1em;
+    }
+    & strong {
+        font-weight: 550;
+    }
+    & ul {
+        margin-block-start: 0;
+    }
+    & li {
+        margin-block-start: .5em;
+    }
 }
-.book__price {
+
+.book-price__cost {
     color: #235427;
     font-family: 'Roboto Slab', Rockwell, 'Rockwell Nova', 'DejaVu Serif', 'Sitka Small', serif;
     font-weight: 400;
     font-size: 4em;
     margin-block: 0 .5em;
 }
+
 .book__notes {
     max-width: 70ch;
 }
-.book__notes > h2 {
+
+.book__notes>h2 {
     margin: 1em 0 0;
 }
+
 .book__notes h3 {
     margin: .5em 0 0;
 }
+
 .book__notes h4 {
     margin-block-end: .5em;
 }
+
 .book__notes h5 {
     font: inherit;
     letter-spacing: .01em;
     margin-block: .5em .25em;
     text-transform: uppercase;
 }
+
 .book__notes ul {
     margin: 0;
     padding-inline-start: 1.25em;
 }
+
 .book__notes li {
     margin-block-start: .5em;
 }
+
 .book-ingredients__contents {
     max-width: none;
     display: grid;

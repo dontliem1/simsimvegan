@@ -47,7 +47,7 @@ fields:
         type: colorpicker
     introduction:
         label: 'dontliem1.simsimvegan::lang.introduction.label'
-        size: large
+        size: giant
         mode: split
         type: markdown
     ingridients:

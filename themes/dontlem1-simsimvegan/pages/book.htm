@@ -22,14 +22,19 @@ public function onStart() {
 ==
 {{ html_image(book.cover|media, '', { width: 320, height: 178, class: 'book__cover' }) }}
 <h1 class="book__title">{{ this.page.title }}</h1>
-{% if not isPaid %}
-    <div class="container">
-        <p>Чтобы приобрести сборник, напишите мне в одной из социальных сетей из шапки сайта.</p>
-        <p class="book__price">{{ book.price }} ₽</p>
+<div class="book__start container">
+    {% if not isPaid %}
+        <div class="book-price">
+            <p>Чтобы приобрести сборник, напишите мне в одной из социальных сетей из шапки сайта.</p>
+            <p class="book-price__cost">{{ book.price }} ₽</p>
+        </div>
+    {% endif %}
+    <div class="book__introduction">{{ book.introduction|md }}</div>
+    <div class="book-anchors">
+        <h2 class="book-anchors__title">Рецепты</h2>
+        <ul class="book-anchors__list">{% for recipe in recipes %}<li>{{ isPaid ? html_link('#'~recipe.slug, recipe.name) : recipe.name }}</li>{% endfor %}</ul>
     </div>
-{% endif %}
-<div class="container book__introduction">{{ book.introduction|md }}</div>
-<ul class="container book__anchors">{% for recipe in recipes %}<li>{{ isPaid ? html_link('#'~recipe.slug, recipe.name) : recipe.name }}</li>{% endfor %}</ul>
+</div>
 {% if isPaid %}
 {% for recipe in recipes %}
     <article class="recipe container" id="{{ recipe.slug }}">
