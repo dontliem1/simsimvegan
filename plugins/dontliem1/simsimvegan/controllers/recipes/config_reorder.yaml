@@ -1,3 +1,5 @@
+title: Рецепты
 modelClass: Dontliem1\Simsimvegan\Models\Recipe
+nameFrom: name
 toolbar:
     buttons: reorder_toolbar

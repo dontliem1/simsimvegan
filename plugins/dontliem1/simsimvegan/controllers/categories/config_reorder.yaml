@@ -1,3 +1,5 @@
+title: Категории
 modelClass: Dontliem1\Simsimvegan\Models\Category
+nameFrom: name
 toolbar:
     buttons: reorder_toolbar

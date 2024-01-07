@@ -1,10 +1,11 @@
 list: $/dontliem1/simsimvegan/models/recipe/columns.yaml
 modelClass: Dontliem1\Simsimvegan\Models\Recipe
-title: dontliem1.simsimvegan::lang.recipe.plural
+title: 'dontliem1.simsimvegan::lang.recipe.plural'
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
 showCheckboxes: true
 recordsPerPage: 20
+defaultSort: sort_order
 toolbar:
     buttons: list_toolbar
     search:

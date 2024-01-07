@@ -1,4 +1,4 @@
-name: dontliem1.simsimvegan::lang.recipe.single
+name: 'dontliem1.simsimvegan::lang.recipe.single'
 form: $/dontliem1/simsimvegan/models/recipe/fields.yaml
 modelClass: Dontliem1\Simsimvegan\Models\Recipe
 defaultRedirect: dontliem1/simsimvegan/recipes

@@ -1,6 +1,6 @@
 list: $/dontliem1/simsimvegan/models/category/columns.yaml
 modelClass: Dontliem1\Simsimvegan\Models\Category
-title: dontliem1.simsimvegan::lang.category.plural
+title: 'dontliem1.simsimvegan::lang.category.plural'
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
 showCheckboxes: true
