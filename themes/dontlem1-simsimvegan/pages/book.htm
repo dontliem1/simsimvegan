@@ -35,7 +35,7 @@ public function onStart() {
         <ul class="book-anchors__list">{% for recipe in recipes %}<li>{{ isPaid ? html_link('#'~recipe.slug, recipe.name) : recipe.name }}</li>{% endfor %}</ul>
     </div>
 </div>
-{% if isPaid %}
+{% if not isPaid %}
 {% for recipe in recipes %}
     <article class="recipe container" id="{{ recipe.slug }}">
         {% set photos = recipe.photos().get() %}
@@ -46,7 +46,7 @@ public function onStart() {
             {% endfor %}
         </div>
         {% endif %}
-        <h2 class="recipe__name">{{ recipe.name }}</h2>
+        <h2 class="recipe__name">{{ recipe.name }}<br><small class="recipe__category">{{ recipe.category.name }}</small></h2>
         <p class="recipe__portions">{{ recipe.portions }}</p>
         <div class="recipe-ingridients">
             <h3 class="visually-hidden" hidden>Ингридиенты</h3>
@@ -77,7 +77,7 @@ public function onStart() {
         <script>
             const bookIngredientsHeadings = document.querySelectorAll('.book-ingredients h4');
             const bookIngredientsContents = document.querySelector('.book-ingredients__contents');
-            
+
             for (let i = 0; i < bookIngredientsHeadings.length; i++) {
                 const bookIngredientsHeadingElement = document.createElement('li');
                 const bookIngredientsHeadingLink = document.createElement('a');
